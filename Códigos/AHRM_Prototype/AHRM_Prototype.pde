@@ -1,8 +1,8 @@
 /* 
 
- Alternative Heart Rate Monitor
+ Alternative Heart Rate Monitor Prototype.
  
- Código implementado para o desenvolvimento do Projeto Integrador e TCC do Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Norte - Campus Caicó
+ Código implementado para o desenvolvimento do Projeto Integrador e TCC do Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Norte - Campus Caicó.
  
  */
 
