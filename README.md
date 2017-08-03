@@ -12,15 +12,3 @@ Modus operandi: The patient undergoes an Electrocardiogram (ECG) test performed 
 All data collected from the patient is automatically saved to a database. This data is the result of the exam and will be converted to PDF format.
 The patient should send the PDF to the doctor through the website. The doctor should analyze the result of the examination, draw up an award and send it to the patient through the website.
 
-Portuguese:
-
-AHRM CDS (Alternative Heart Rate Monitor Clinical Decision Support) é um sistema de telemedicina concebido para auxiliar no diagnóstico de possíveis doenças cardíacas que uma pessoa tem. 
-Sua arquitetura é composta de duas partes que se interligam como um todo: o AHRM Prototype (Um monitor de frequência cardíaca embarcado de baixo custo) e o AHRM Web (Um website que conecta o paciente ao médico).
-
-AHRM Web: É um website criado para interligar o paciente à seu médico, de modo que o diagnóstico da doença possa ser feito online. Esse website foi desenvolvido utilizando as tecnologias JavaScript, PHP e MySQL.
-
-AHRM Prototype: É um monitor de frequência cardíaca de baixo custo, é composto de um hardware e um software para desktop. Esse sistema embarcado foi desenvolvido utilizando as tecnologias Arduino e Processing.  
-
-Funcionamento: O paciente passa por um exame de Eletrocardiograma (ECG) realizado pelo AHRM Prototype. Os dados coletados são transmitidos para o aplicativo, o software se encarrega de plotar o gráfico e elaborar um padrão de onda cardíaca. O paciente deve informar os seus sintomas/parâmetros clínicos através do website. 
-Todos os dados coletados do paciente são salvos automaticamente em um banco de dados. Esses dados são o resultado do exame e serão convertidos para o formato PDF. 
-O paciente deve enviar o PDF para o médico através do website. O médico deve analisar o resultado do exame, elaborar um laudo e enviar para o paciente através do website.
