@@ -1,9 +1,9 @@
-drop schema if exists bd_tcc;
-create schema if not exists bd_tcc;
-use bd_tcc;
+drop schema if exists bd_ahrm_cds;
+create schema if not exists bd_ahrm_cds;
+use bd_ahrm_cds;
 
 # Tabela utilizada para armazenar os estados cadastrados no sistema
-create table if not exists Uf(
+create table if not exists uf(
 
     codigo int not null auto_increment,
     sigla varchar(2) not null,
@@ -50,7 +50,7 @@ create table if not exists medico(
     email_medico varchar(100) not null,
     telefone varchar(12) not null,
     senha varchar(16) not null,
-	uf varchar(2) null,
+	uf int not null,
     cidade varchar(30) not null,
     bairro varchar(30) not null,
     rua varchar(30) not null,
@@ -62,10 +62,9 @@ create table if not exists medico(
     tipo_imagem_perfil text not null,
     imagem_perfil longblob not null,
 	primary key(codigo),
-	foreign key(uf) references Uf(codigo)
+	foreign key(uf) references uf(codigo)
     
 );
-drop table medico;
 
 # Tabela utilizada para armazenar os pacientes cadastrados no sistema
 create table if not exists paciente(
@@ -76,7 +75,7 @@ create table if not exists paciente(
     email_paciente varchar(100) not null, 
     telefone varchar(12) not null,
     senha varchar(16) not null,
-	uf varchar(2) not null,
+	uf int not null,
     cidade varchar(30) not null,
 	bairro varchar(30) not null,
     rua varchar(30) not null,
@@ -93,10 +92,9 @@ create table if not exists paciente(
 	medico_paciente int,
 	primary key(codigo),
     foreign key(medico_paciente) references medico(codigo),
-    foreign key(uf) references Uf(codigo)
+    foreign key(uf) references uf(codigo)
     
 );
-drop table paciente;
 
 # Tabela utilizada para armazenar os pedidos de vínculo dos pacientes para os médicos
 create table if not exists pedido_vinculo(
@@ -181,7 +179,6 @@ create table if not exists laudo(
     foreign key(codigo_paciente) references paciente(codigo)
     
 );
-drop table laudo;
 
 # Falta implementar 
 /*
@@ -216,7 +213,7 @@ create table if not exists Cidade(
     nome varchar(30) not null,
     uf int not null,
     primary key(codigo),
-    foreign key(uf) references Uf(codigo)
+    foreign key(uf) references uf(codigo)
 ); 
 */
 
