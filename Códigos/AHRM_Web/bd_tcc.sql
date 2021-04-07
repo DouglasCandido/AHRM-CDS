@@ -1,5 +1,5 @@
-# drop schema bd_tcc;
-create schema bd_tcc;
+drop schema if exists bd_tcc;
+create schema if not exists bd_tcc;
 use bd_tcc;
 
 # Tabela utilizada para armazenar os estados cadastrados no sistema
@@ -11,14 +11,6 @@ create table if not exists Uf(
     primary key(codigo) 
     
 );
-
-/* create table if not exists Cidade(
-	codigo int not null auto_increment,
-    nome varchar(30) not null,
-    uf int not null,
-    primary key(codigo),
-    foreign key(uf) references Uf(codigo)
-); */
 
 insert into uf(sigla, nome) values("AC","Acre");
 insert into uf(sigla, nome) values("AL","Alagoas");
@@ -191,7 +183,8 @@ create table if not exists laudo(
 );
 drop table laudo;
 
-# Falta implementar no PHP
+# Falta implementar 
+/*
 create table if not exists notificacao(
 
     codigo int not null auto_increment,
@@ -203,16 +196,29 @@ create table if not exists notificacao(
     primary key(codigo) 
     
 );
+*/
 
-# Falta implementar no PHP
+# Falta implementar
+/*
 create table  if not exists tabelasensor(
 
-  hora varchar(30) not null,
+  datahora datetime not null,
   bpm int not null,
   primary key(hora)
   
 );
+*/
 
+# Falta implementar
+/* 
+create table if not exists Cidade(
+	codigo int not null auto_increment,
+    nome varchar(30) not null,
+    uf int not null,
+    primary key(codigo),
+    foreign key(uf) references Uf(codigo)
+); 
+*/
 
 
 
