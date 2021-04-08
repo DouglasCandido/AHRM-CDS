@@ -28,11 +28,12 @@
 
     if($resultado) {
 
-        $_SESSION['nome_paciente'] = $nome_paciente;
-        $_SESSION['cpf_paciente'] = $cpf_paciente;
+        $_SESSION['nome_medico'] = $nome_medico;
+        $_SESSION['cpf_medico'] = $cpf_medico;
 
         echo "<script> alert('O perfil foi editado com sucesso!'); window.location='perfil_medico.php'; </script>";
 
     }
 
 ?> 
+

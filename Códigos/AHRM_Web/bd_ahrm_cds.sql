@@ -7,10 +7,10 @@ use bd_ahrm_cds;
 # Tabela utilizada para armazenar os estados cadastrados no sistema
 create table if not exists uf(
 
-    codigo int not null auto_increment,
+    # codigo int not null auto_increment,
     sigla varchar(2) not null,
     nome varchar(25) not null,
-    primary key(codigo) 
+    primary key(sigla) 
     
 );
 
@@ -52,7 +52,7 @@ create table if not exists medico(
     email_medico varchar(100) not null,
     telefone varchar(12) not null,
     senha varchar(16) not null,
-	uf int not null,
+	uf varchar(2) not null,
     cidade varchar(30) not null,
     bairro varchar(30) not null,
     rua varchar(30) not null,
@@ -64,7 +64,7 @@ create table if not exists medico(
     tipo_imagem_perfil text not null,
     imagem_perfil longblob not null,
 	primary key(codigo),
-	foreign key(uf) references uf(codigo)
+	foreign key(uf) references uf(sigla)
     
 );
 
@@ -75,9 +75,9 @@ create table if not exists paciente(
     nome_paciente varchar(50) not null,
     cpf_paciente varchar(14) unique not null,
     email_paciente varchar(100) not null, 
-    telefone varchar(12) not null,
+    telefone varchar(12) not null, 
     senha varchar(16) not null,
-	uf int not null,
+	uf varchar(2) not null,
     cidade varchar(30) not null,
 	bairro varchar(30) not null,
     rua varchar(30) not null,
@@ -94,7 +94,7 @@ create table if not exists paciente(
 	medico_paciente int,
 	primary key(codigo),
     foreign key(medico_paciente) references medico(codigo),
-    foreign key(uf) references uf(codigo)
+    foreign key(uf) references uf(sigla)
     
 );
 
