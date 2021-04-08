@@ -1,3 +1,5 @@
+# ALTER USER root@localhost IDENTIFIED WITH mysql_native_password BY 'mysqlUsernamePassword';
+
 drop schema if exists bd_ahrm_cds;
 create schema if not exists bd_ahrm_cds;
 use bd_ahrm_cds;
