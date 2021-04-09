@@ -39,8 +39,9 @@
     $altura_paciente = $dados['altura'];
     $diabetico = $dados['diabetico'];
 
-    $date_time = new DateTime($dados['data_de_nascimento']);
-    $idade_paciente = 2016 - $date_time->format('Y');
+    $current_date_time = new DateTime(date());
+    $date_time_birth_date = new DateTime($dados['data_de_nascimento']);
+	$idade_paciente =  $current_date_time->format('Y') - $date_time_birth_date->format('Y');
 
     $date_time_exame = new DateTime($_POST['cadDataExame']);
     $data_do_exame = $date_time_exame->format('d/m/Y');
@@ -223,3 +224,4 @@
 	$mpdf->Output();
 
 ?>
+
