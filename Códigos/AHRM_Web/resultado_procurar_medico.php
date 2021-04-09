@@ -24,9 +24,11 @@
                     </div>
                     <div class='panel-body'>";
 
-                        echo "<p style='text-align: center'> <img height='350' width='350' src='ver_imagem_medico_pesquisado.php?id_medico=" . $dados['codigo'] . "'></p>
+                    echo "<center>";
 
-                        <br />";
+                        include("ver_imagem_medico_pesquisado.php");
+
+                    echo "</center>";
 
                         echo "<div class='div_panel_body_info'>";
                             echo "<p> Nome: " . $dados['nome_medico'] . "</p>";

@@ -72,7 +72,7 @@
 
                 </li>
                 <li class="dropdown">
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown"> <img class="imagem_perfil_menu_topo" src="ver_imagem_paciente.php?id_paciente=<?php echo $_SESSION['codigo_paciente'];?>"> <?php echo $_SESSION['nome_paciente']; ?> <b class="caret"></b> </a>
+                <a href="" class="dropdown-toggle" data-toggle="dropdown"><?php include('ver_imagem_paciente.php'); echo $_SESSION['nome_paciente']; ?> <b class="caret"></b> </a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="perfil_paciente.php"><i class="fa fa-fw fa-user"></i> Perfil </a>
@@ -148,56 +148,60 @@
                                         </div>
                                         <div class='panel-body' style='background-color: rgba(0, 0, 0, 0);'>";
 
-                                            echo "<p style='text-align: center'> <img height='350' width='350' src='ver_imagem_paciente_pesquisado.php?id_paciente=" . $dados['codigo'] . "'></p>
+                                            echo "<center>";
 
-                                            <br />";
+                                                include("ver_imagem_paciente_pesquisado.php");
+
+                                            echo "</center>";
+
+                                            echo "<br />";
 
                                             echo "<div class='div_panel_body_info' style='font-size: 14pt; text-align: justify;'>";
 
                                                 echo "<ol class='breadcrumb' style='background-color: rgba(0, 0, 0, 0.8);'>";
 
                                                     echo "<div class='form-group'><label style='font-size: 12pt; color: white;'>Nome:</label> &nbsp;";
-                                                    echo "<input type='text' name='editNome' value=" . $dados['nome_paciente'] . " size='30' class='inputs'> <br />";
+                                                    echo "<input type='text' style='width: 100%;' style='width: 100%;' name='editNome' value=" . $dados['nome_paciente'] . " class='inputs'> <br />";
                                                     echo "</div>";
 
                                                     echo "<div class='form-group'><label style='font-size: 12pt; color: white;'>Data de nascimento:</label> &nbsp;";
-                                                    echo "<input type='text' name='editData' value=" . $dados['data_de_nascimento'] . " size='30' class='inputs'> <br />";
+                                                    echo "<input type='text' style='width: 100%;' name='editData' value=" . $dados['data_de_nascimento'] . " class='inputs'> <br />";
                                                     echo "</div>";
 
                                                     echo "<div class='form-group'><label style='font-size: 12pt; color: white;'>CPF:</label> &nbsp;";
-                                                    echo "<input type='text' name='editCPF' value=" . $dados['cpf_paciente'] . " size='30' class='inputs'> <br />";
+                                                    echo "<input type='text' style='width: 100%;' name='editCPF' value=" . $dados['cpf_paciente'] . " class='inputs'> <br />";
                                                     echo "</div>";
 
                                                     echo "<div class='form-group'><label style='font-size: 12pt; color: white;'>Senha:</label> &nbsp;";
-                                                    echo "<input type='text' name='editSenha' value=" . $dados['senha'] . " size='30' class='inputs'> <br />";
+                                                    echo "<input type='text' style='width: 100%;' name='editSenha' value=" . $dados['senha'] . " class='inputs'> <br />";
                                                     echo "</div>";
 
                                                     echo "<div class='form-group'><label style='font-size: 12pt; color: white;'>Email:</label> &nbsp;";
-                                                    echo "<input type='text' name='editEmail' value=" . $dados['email_paciente'] . " size='30' class='inputs'> <br />";
+                                                    echo "<input type='text' style='width: 100%;' name='editEmail' value=" . $dados['email_paciente'] . " class='inputs'> <br />";
                                                     echo "</div>";
 
                                                     echo "<div class='form-group'><label style='font-size: 12pt; color: white;'>Telefone:</label> &nbsp;";
-                                                    echo "<input type='text' name='editTelefone' value=" . $dados['telefone'] . " size='30' class='inputs'> <br />";
+                                                    echo "<input type='text' style='width: 100%;' name='editTelefone' value=" . $dados['telefone'] . " class='inputs'> <br />";
                                                     echo "</div>";
 
                                                     echo "<div class='form-group'><label style='font-size: 12pt; color: white;'>Estado:</label> &nbsp;";
-                                                    echo "<input type='text' name='editUF' value=" . $dados['uf'] . " size='30'  class='inputs'> <br />";
+                                                    echo "<input type='text' style='width: 100%;' name='editUF' value=" . $dados['uf'] . " class='inputs'> <br />";
                                                     echo "</div>";
 
                                                     echo "<div class='form-group'><label style='font-size: 12pt; color: white;'>Cidade:</label> &nbsp;";
-                                                    echo "<input type='text' name='editCidade' value=" . $dados['cidade'] . " size='30' class='inputs'> <br />";
+                                                    echo "<input type='text' style='width: 100%;' name='editCidade' value=" . $dados['cidade'] . " class='inputs'> <br />";
                                                     echo "</div>";
 
                                                     echo "<div class='form-group'><label style='font-size: 12pt; color: white;'>Bairro:</label> &nbsp;";
-                                                    echo "<input type='text' name='editBairro' value=" . $dados['bairro'] . " size='30' class='inputs'> <br />";
+                                                    echo "<input type='text' style='width: 100%;' name='editBairro' value=" . $dados['bairro'] . "  class='inputs'> <br />";
                                                     echo "</div>";
 
                                                     echo "<div class='form-group'><label style='font-size: 12pt; color: white;'>Rua:</label> &nbsp;";
-                                                    echo "<input type='text' name='editRua' value=" . $dados['rua'] . " size='30' class='inputs'> <br />";
+                                                    echo "<input type='text' style='width: 100%;' name='editRua' value=" . $dados['rua'] . " class='inputs'> <br />";
                                                     echo "</div>";
 
                                                     echo "<div class='form-group'><label style='font-size: 12pt; color: white;'>Numero:</label> &nbsp;";
-                                                    echo "<input type='text' name='editNumero' value=" . $dados['numero'] . " size='30' class='inputs'> <br />";
+                                                    echo "<input type='text' style='width: 100%;' name='editNumero' value=" . $dados['numero'] . " class='inputs'> <br />";
                                                     echo "</div>";
 
                                                 echo "</ol>";

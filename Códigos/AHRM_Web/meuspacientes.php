@@ -74,7 +74,7 @@
 
                 </li>
                 <li class="dropdown">
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown"> <img class="imagem_perfil_menu_topo" src="ver_imagem_medico.php?id_medico=<?php echo $_SESSION['codigo_medico'];?>"> <?php echo $_SESSION['nome_medico']; ?> <b class="caret"></b> </a>
+                <a href="" class="dropdown-toggle" data-toggle="dropdown"><?php include('ver_imagem_medico.php'); echo $_SESSION['nome_medico']; ?> <b class="caret"></b> </a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="perfil_medico.php"><i class="fa fa-fw fa-user"></i> Perfil </a>
@@ -169,9 +169,11 @@
                                         </div>
                                         <div class='panel-body' style='background-color: rgba(0, 0, 0, 0);'>";
 
-                                            echo "<p style='text-align: center'> <img height='350' width='350' src='ver_imagem_paciente_pesquisado.php?id_paciente=" . $dados2['codigo'] . "'></p>
+                                        echo "<center>";
 
-                                            <br />";
+                                            include("ver_imagem_paciente_pesquisado.php");
+
+                                        echo "</center>";
 
                                             echo "<div class='div_panel_body_info' style='font-size: 12pt;'>";
                                                 echo "<p> Nome: " . $dados2['nome_paciente'] . "</p>";

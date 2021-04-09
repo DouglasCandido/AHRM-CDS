@@ -24,6 +24,7 @@
             $pega_dados_paciente = "select codigo, nome_paciente, email_paciente, telefone, uf, cidade from paciente where codigo = $codigo_paciente;";
             $resultado2 = mysqli_query($conexao, $pega_dados_paciente) or die(mysqli_error($conexao));
             $informacao_paciente = mysqli_fetch_array($resultado2);
+            $dados = $informacao_paciente;
 
             echo "<div class='col-lg-8' style='left: 33%;' id='divPedidoVinculo'>";
 
@@ -34,7 +35,8 @@
                 <div class='panel-body'>";
 
                     echo "<p style='text-align: center'>"; 
-                        echo "<img height='250' width='250' src='ver_imagem_paciente_pesquisado.php?id_paciente=" . $informacao_paciente['codigo'] . "'></p>"; 
+
+                    include("ver_imagem_paciente_pesquisado.php");
 
                     echo "<div class='div_panel_body_info'>";
                         echo "<p> Nome: " . $informacao_paciente['nome_paciente'] . "</p>";
