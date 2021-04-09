@@ -206,7 +206,7 @@
                                         $time = strtotime(date('Y-m-d H:i:s'));
                                         $data_do_laudo = date('Y-m-d', $time);
 
-                                        echo "<input type='text' name='cadDataLaudo' style='color: black;' value=" . $data_do_laudo . ">";
+                                        echo "<input type='date' name='cadDataLaudo' readonly style='color: black;' value=" . $data_do_laudo . ">";
 
                                     ?>
 
@@ -214,7 +214,7 @@
 
                             <div class="form-group">
 
-                                    <label style="font-size: 12pt; color: white;">Escreva o seu diagnóstico final sobre esse laudo:</label>
+                                    <label style="font-size: 12pt; color: white;">Escreva o seu diagnóstico final sobre esse exame:</label>
                                     <textarea rows="10" cols="143" name="cadDiagnostico"></textarea>
 
                             </div>
@@ -243,3 +243,4 @@
 </body>
 
 </html>
+

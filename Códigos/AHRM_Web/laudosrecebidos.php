@@ -2,7 +2,7 @@
 
     require_once("conexao.php");
     
-    require("integridademedico.php");
+    require("integridadepaciente.php");
     
 ?>
 
@@ -21,7 +21,7 @@
 
 	<link rel="icon" href="favicon.png" type="image/x-icon"/>
     
-    <title>AHRM CDS - Exames recebidos</title>
+    <title>AHRM CDS - Laudos recebidos</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -43,8 +43,8 @@
 
     <div id="wrapper">
 
-                <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="cor" style="background-color: #cc0000;">
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="cor">
 
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -53,20 +53,29 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class='navbar-brand' href='indexmedico.php' style='color: #fff; font-size: 16pt; position: absolute; top: 10px;'>AHRM CDS</a>
+                <a class='navbar-brand' href='indexpaciente.php' style='color: #fff; font-size: 16pt; position: absolute; top: 10px;'>AHRM CDS</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    
+
                     <a href="" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell" style="font-size: 20px; padding: 0px; margin: 0px; line-height: 50px;"></i> <b class="caret"></b></a>
+
+                    <!-- Notificações
+                    <ul class="dropdown-menu alert-dropdown">
+                        <li>
+                            <a href="">Exames <span class="label label-default"> Novo</span></a>
+                        </li>
+
+                    </ul>
+                    -->
 
                 </li>
                 <li class="dropdown">
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown"> <img class="imagem_perfil_menu_topo" src="ver_imagem_medico.php?id_medico=<?php echo $_SESSION['codigo_medico'];?>"> <?php echo $_SESSION['nome_medico']; ?> <b class="caret"></b> </a>
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown"> <img class="imagem_perfil_menu_topo" src="ver_imagem_paciente.php?id_paciente=<?php echo $_SESSION['codigo_paciente'];?>"> <?php echo $_SESSION['nome_paciente']; ?> <b class="caret"></b> </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="perfil_medico.php"><i class="fa fa-fw fa-user"></i> Perfil </a>
+                            <a href="perfil_paciente.php"><i class="fa fa-fw fa-user"></i> Perfil </a>
                         </li>
                         <li class="divider"></li>
                         <li>
@@ -76,37 +85,39 @@
                 </li>
             </ul>
 
-            <div class="collapse navbar-collapse navbar-ex1-collapse" style="position: absolute;">
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav" id="cormenulateral">
+
                     <li>
-                        <a href="javascript: ;" data-toggle="collapse" data-target="#pacientes"><i class="fa fa-user"></i> Pacientes <i class="fa fa-fw fa-caret-down">
+                        <a href="javascript: ;" data-toggle="collapse" data-target="#medico"><i class="fa fa-user-md"></i> Médico <i class="fa fa-fw fa-caret-down">
                         </i></a>
-                        <ul id="pacientes" class="collapse">
+                        <ul id="medico" class="collapse">
                             <li>
-                                <a href="meuspacientes.php"><i class="fa fa-group"></i> Meus pacientes </a>
+                                <a href="meumedico.php"><i class="fa fa-user-md"></i> Meu médico </a>
                             </li>
                             <li>
-                                <a href="aceitar_novo_paciente.php"><i class="fa fa-plus"></i> Aceitar novo paciente </a>
+                                <a href="procurarmedico.php"><i class="fa fa-search"></i> Procurar médico </a>
                             </li>
                         </ul>
                     </li>
+
                     <li>
-                        <a href="javascript: ;" data-toggle="collapse" data-target="#exames"><i class="fa fa-file"></i> Laudos <i class="fa fa-fw fa-caret-down">
+                        <a href="javascript: ;" data-toggle="collapse" data-target="#exames"><i class="fa fa-file"></i> Exames <i class="fa fa-fw fa-caret-down">
                         </i></a>
                         <ul id="exames" class="collapse">
                             <li>
-                                <a href="examesenviados.php"><i class="fa fa-exclamation-circle"></i> Exames recebidos </a>
+                                <a href="laudosrecebidos.php"><i class="fa fa-check-circle"></i> Laudos recebidos </a>
                             </li>
                             <li>
-                                <a href="laudosenviados.php"><i class="fa fa-arrow-up"></i> Laudos enviados </a>
+                                <a href="examesenviados.php"><i class="fa fa-arrow-up"></i> Exames enviados</a>
                             </li>
                             <li>
-                                <a href="novolaudo.php"><i class="fa fa-arrow-up"></i> Novo laudo </a>
+                                <a href="novoexame.php"><i class="fa fa-plus"></i> Novo exame </a>
                             </li>
                         </ul>
                     </li>
-                </ul>
-            </div>
+
+   		    </div>
         </nav>
 
         <div id="page-wrapper">
@@ -116,15 +127,15 @@
                     <div class="col-lg-12">
 
                         <h1 class="page-header">
-                            Aqui você pode ver todos os exames que já recebeu dos seus pacientes 
+                            Aqui você pode ver todos os laudos que já recebeu do seu médico
                         </h1>
 
                         <div id="examesrecebidos">
 
                             <?php 
 
-                            # Verifica todos os exames já enviados pelo paciente 
-                            $q1 = "select * from exame where codigo_medico =" . $_SESSION['codigo_medico'] . " order by data_do_exame desc;";
+                            # Verifica todos os laudos já recebidos do médico 
+                            $q1 = "select * from laudo where codigo_paciente =" . $_SESSION['codigo_paciente'] . " order by data_do_laudo desc;";
                             $resultado1 = mysqli_query($conexao, $q1) or die(mysqli_error($conexao));
                             $total1 = mysqli_num_rows($resultado1);
 
@@ -132,24 +143,22 @@
 
                                 while($dados1 = mysqli_fetch_array($resultado1)) {
 
-                                    # Busca o nome do paciente que enviou o exame
-                                    $q2 = "select nome_paciente from paciente where codigo =" . $dados1['codigo_paciente'];
+                                    # Busca o nome do médico que enviou o laudo
+                                    $q2 = "select nome_medico from medico where codigo =" . $dados1['codigo_medico'];
                                     $resultado2 = mysqli_query($conexao, $q2) or die(mysqli_error($conexao));
                                     $total2 = mysqli_num_rows($resultado2);
                                     $dados2 = mysqli_fetch_array($resultado2);
 
-                                    $date_time_exame = new DateTime($dados1['data_do_exame']);
-                                    $data_do_exame = $date_time_exame->format('d/m/Y');
+                                    $date_time_laudo = new DateTime($dados1['data_do_laudo']);
+                                    $data_do_laudo = $date_time_laudo->format('d/m/Y');
 
-                                echo "<p style='text-align: center; font-size: 16pt;'> Data de recebimento do exame: " . $data_do_exame . "</p>";
+                                echo "<p style='text-align: center; font-size: 16pt;'> Data de recebimento do laudo: " . $data_do_laudo . "</p>";
 
-                                    echo "<p style='text-align: center; font-size: 16pt;'> Enviado pelo paciente: " . $dados2['nome_paciente'] . "</p>";
+                                    echo "<p style='text-align: center; font-size: 16pt;'> Enviado pelo médico: " . $dados2['nome_medico'] . "</p>";
 
-                                    echo "<p style='text-align: center; font-size: 16pt;'> Tipo do exame: " . $dados1['tipo_exame'] . "</p>";
+                                    echo "<p style='text-align: center; font-size: 16pt;'> Descrição do laudo: " . $dados1['descricao_laudo'] . "</p>";                                    
 
-                                    echo "<p style='text-align: center; font-size: 16pt;'> Descrição do exame: " . $dados1['descricao_exame'] . "</p>";                                    
-
-                                    echo "<p style='text-align: center'> <iframe height='500' width='500' src='ver_pdf.php?id_paciente=" . $dados1['codigo_paciente'] . "'></iframe></p>
+                                    echo "<p style='text-align: center'> <iframe height='500' width='500' src='ver_pdf_laudo.php?id_medico=" . $dados1['codigo_medico'] . "'></iframe></p>
 
                                     <hr>
 
@@ -161,7 +170,7 @@
                             else {
 
                                 echo "<h3 style='text-align: center;'>";
-                                echo "Você ainda não recebeu exames dos seus pacientes.";
+                                echo "Você ainda não recebeu laudos dos seus médicos.";
                                 echo "</h3>";
 
                             }

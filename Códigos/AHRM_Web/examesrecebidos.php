@@ -95,7 +95,7 @@
                         </i></a>
                         <ul id="exames" class="collapse">
                             <li>
-                                <a href="examesenviados.php"><i class="fa fa-exclamation-circle"></i> Exames recebidos </a>
+                                <a href="examesrecebidos.php"><i class="fa fa-exclamation-circle"></i> Exames recebidos </a>
                             </li>
                             <li>
                                 <a href="laudosenviados.php"><i class="fa fa-arrow-up"></i> Laudos enviados </a>
@@ -143,7 +143,7 @@
 
                                 echo "<p style='text-align: center; font-size: 16pt;'> Data de recebimento do exame: " . $data_do_exame . "</p>";
 
-                                    echo "<p style='text-align: center; font-size: 16pt;'> Enviado para pelo paciente: " . $dados2['nome_paciente'] . "</p>";
+                                    echo "<p style='text-align: center; font-size: 16pt;'> Enviado pelo paciente: " . $dados2['nome_paciente'] . "</p>";
 
                                     echo "<p style='text-align: center; font-size: 16pt;'> Tipo do exame: " . $dados1['tipo_exame'] . "</p>";
 
@@ -182,3 +182,4 @@
 </body>
 
 </html>
+

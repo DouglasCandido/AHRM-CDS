@@ -156,9 +156,16 @@
 
                             <div class="form-group">
 
-                                    <label style="font-size: 12pt; color: white;">Data de envio do exame:</label> &nbsp;
+                                <label style="font-size: 12pt; color: white;">Data de envio do exame:</label> &nbsp;
 
-                                    <input type='date' name='cadDataExame'>
+                                <?php
+
+                                    $time = strtotime(date('Y-m-d H:i:s'));
+                                    $data_do_exame = date('Y-m-d', $time);
+
+                                    echo "<input type='date' name='cadDataExame' readonly style='color: black;' value=" . $data_do_exame . ">";
+
+                                ?>
 
                             </div>
 

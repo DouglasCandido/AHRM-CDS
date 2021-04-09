@@ -144,13 +144,20 @@
 
                         <form name="cadLaudoForm" method="post" role="form" enctype="multipart/form-data" action="cadastro/enviar_laudo.php">
 
-                            <div class="form-group">
+                        <div class="form-group">
 
-                                    <label style="font-size: 12pt; color: white;">Data de envio do laudo:</label> &nbsp;
+                            <label style="font-size: 12pt; color: white;">Data de envio do laudo:</label> &nbsp;
 
-                                    <input type='date' name='cadDataLaudo'>
+                            <?php
 
-                            </div>
+                                $time = strtotime(date('Y-m-d H:i:s'));
+                                $data_do_laudo = date('Y-m-d', $time);
+
+                                echo "<input type='date' name='cadDataLaudo' readonly style='color: black;' value=" . $data_do_laudo . ">";
+
+                            ?>
+
+                        </div>
 
                             <!--
                             <div class="form-group">
@@ -235,3 +242,4 @@
 </body>
 
 </html>
+

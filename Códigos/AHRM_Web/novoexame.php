@@ -188,16 +188,16 @@
 
                             <div class="form-group">
 
-                                    <label style="font-size: 12pt; color: white;">Data de realização do exame:</label> &nbsp;
+                                <label style="font-size: 12pt; color: white;">Data de realização do exame:</label> &nbsp;
 
-                                    <?php
+                                <?php
 
-                                        $time = strtotime(date('Y-m-d H:i:s'));
-                                        $data_do_exame = date('Y-m-d', $time);
+                                    $time = strtotime(date('Y-m-d H:i:s'));
+                                    $data_do_exame = date('Y-m-d', $time);
 
-                                        echo "<input type='text' name='cadDataExame' style='color: black;' value=" . $data_do_exame . ">";
+                                    echo "<input type='date' name='cadDataExame' style='color: black;' value=" . $data_do_exame . ">";
 
-                                    ?>
+                                ?>
 
                             </div>
 

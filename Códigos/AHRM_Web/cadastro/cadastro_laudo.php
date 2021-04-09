@@ -32,7 +32,6 @@
     $estado_medico = $dados1['uf'];
     $cidade_medico = $dados1['cidade'];
 
-
     # Informações do exame:
     $codigo_exame_escolhido = $_POST['cadExameEscolhido'];
     $q2 = "select * from exame where codigo =" . $codigo_exame_escolhido;
@@ -52,8 +51,9 @@
     $nome_paciente = $dados3['nome_paciente'];
     $genero_paciente = $dados3['genero'];
 
-    $date_time = new DateTime($dados3['data_de_nascimento']);
-    $idade_paciente = 2016 - $date_time->format('Y');
+    $current_date_time = new DateTime(date());
+    $date_time_birth_date = new DateTime($dados3['data_de_nascimento']);
+	$idade_paciente =  $current_date_time->format('Y') - $date_time_birth_date->format('Y');
 
     $peso_paciente = $dados3['peso'];
     $altura_paciente = $dados3['altura'];
@@ -166,7 +166,8 @@
                                 	<div class='div_info' style='text-align: center;'>
 
                                 		<span class='span_info'> Nome do médico:" . " " . $nome_medico . "</span> <br />
-                                        <span class='span_info'> Email do médico:" . " " . $email_medico . "</span> <br />
+                                        <span class='span_info'> CRM do médico:" . " " . $crm_medico . "</span> <br />
+										<span class='span_info'> Email do médico:" . " " . $email_medico . "</span> <br />
                                         <span class='span_info'> Telefone do médico:" . " " . $telefone_medico . "</span> <br />
                                         <span class='span_info'> Estado do médico:" . " " . $estado_medico . "</span> <br />
                                         <span class='span_info'> Cidade do médico:" . " " . $cidade_medico . "</span> <br />
@@ -218,3 +219,4 @@
 	$mpdf->Output();
 
 ?>
+

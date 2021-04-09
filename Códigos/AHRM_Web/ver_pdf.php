@@ -2,7 +2,6 @@
 
 	# Responsável por retornar o PDF enviado
 	require_once("conexao.php");
-	require("integridadepaciente.php");
 	
 	$id_paciente = $_GET['id_paciente'];
 	
@@ -24,3 +23,4 @@
 	}
 
 ?>
+
