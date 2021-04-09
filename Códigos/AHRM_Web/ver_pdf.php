@@ -15,6 +15,8 @@
 		header("Content-type: application/pdf");
 
 		echo $arquivo_pdf->pdf; 
+
+		exit();
 		
 	} else {
 		
