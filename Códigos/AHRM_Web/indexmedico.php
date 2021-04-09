@@ -169,7 +169,7 @@
 
                             <div class="form-group">
                                     <label style="font-size: 12pt; color: white;"> Descrição do laudo </label>
-                                    <textarea rows="10" cols="115" name="cadDescricaoLaudo"></textarea>
+                                    <textarea rows="10" cols="113" name="cadDescricaoLaudo"></textarea>
                             </div>
 
                             <br />

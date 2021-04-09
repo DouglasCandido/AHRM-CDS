@@ -156,8 +156,9 @@
                             $altura_paciente = $dados['altura'];
                             $diabetico = $dados['diabetico'];
 
-                            $date_time = new DateTime($dados['data_de_nascimento']);
-                            $idade_paciente = 2016 - $date_time->format('Y');
+                            $current_date_time = new DateTime(date());
+                            $date_time_birth_date = new DateTime($dados['data_de_nascimento']);
+                            $idade_paciente =  $current_date_time->format('Y') - $date_time_birth_date->format('Y');
 
                             ?>
 
@@ -253,7 +254,7 @@
 
                                 <div class="form-group">
                                     <label style="font-size: 12pt; color: white;">Observações - Para um melhor diagnóstico é necessário detalhadar as informações acima.</label>
-                                    <textarea rows="10" cols="175" name="cadObservacoesPerguntasPessoais"></textarea>
+                                    <textarea rows="10" cols="143" name="cadObservacoesPerguntasPessoais"></textarea>
                                 </div>
 
                                 <hr style="height: 3px; background-color: red; color: red; margin: 0; padding: 0;">
@@ -296,7 +297,7 @@
 
                                         <div class='form-group'>
                                             <label style='font-size: 12pt; color: white;'>Circunstâncias - Detalhe informações sobre o local, a atividade que exercia no momento da ocorrência do sintoma, se houve exposição a fatores ambientais e quais alimentos você ingeriu durante esse dia.</label>
-                                            <textarea rows='10' cols='175' name='cadCircunstanciasSintoma" . $i . "'></textarea>
+                                            <textarea rows='10' cols='143' name='cadCircunstanciasSintoma" . $i . "'></textarea>
                                         </div>
 
                                         <hr style='height: 3px; background-color: red; color: red; margin: 0; padding: 0;'>

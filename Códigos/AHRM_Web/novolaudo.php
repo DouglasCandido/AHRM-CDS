@@ -215,7 +215,7 @@
                             <div class="form-group">
 
                                     <label style="font-size: 12pt; color: white;">Escreva o seu diagnóstico final sobre esse laudo:</label>
-                                    <textarea rows="10" cols="145" name="cadDiagnostico"></textarea>
+                                    <textarea rows="10" cols="143" name="cadDiagnostico"></textarea>
 
                             </div>
 

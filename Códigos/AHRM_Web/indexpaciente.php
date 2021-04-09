@@ -177,7 +177,7 @@
 
                             <div class="form-group">
                                     <label style="font-size: 12pt; color: white;"> Descrição do exame </label>
-                                    <textarea rows="10" cols="115" name="cadDescricaoExame"></textarea>
+                                    <textarea rows="10" cols="113" name="cadDescricaoExame"></textarea>
                                 </div>
 
                             <div class="form-group"> 
