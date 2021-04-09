@@ -72,7 +72,7 @@
 
                 </li>
                 <li class="dropdown">
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown"> <img class="imagem_perfil_menu_topo" src="ver_imagem_paciente.php?id_paciente= <?php echo $_SESSION['codigo_paciente']; ?>"> <?php echo $_SESSION['nome_paciente']; ?> <b class="caret"></b> </a>
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown"> <img class="imagem_perfil_menu_topo" src="ver_imagem_paciente.php?id_paciente=<?php echo $_SESSION['codigo_paciente'];?>"> <?php echo $_SESSION['nome_paciente']; ?> <b class="caret"></b> </a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="perfil_paciente.php"><i class="fa fa-fw fa-user"></i> Perfil </a>

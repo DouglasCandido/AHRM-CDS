@@ -2,7 +2,7 @@
 	require_once("conexao.php");
 	# Exibe a imagem do paciente pesquisado
 	$id_paciente = $_GET['id_paciente'];
-	$q = "select tipo_imagem_perfil,imagem_perfil from paciente where codigo = $id_paciente";
+	$q = "select tipo_imagem_perfil,imagem_perfil from paciente where codigo =$id_paciente";
 	$resultado = mysqli_query($conexao, $q);
 	if($resultado) {
 		$imagem = mysqli_fetch_object($resultado);
