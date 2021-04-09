@@ -1,8 +1,11 @@
-# ALTER USER root@localhost IDENTIFIED WITH mysql_native_password BY 'mysqlUsernamePassword';
-
 drop schema if exists bd_ahrm_cds;
+
 create schema if not exists bd_ahrm_cds;
+
 use bd_ahrm_cds;
+
+# ALTER USER root@localhost IDENTIFIED WITH mysql_native_password BY 'mysqlUsernamePassword';
+# ALTER DATABASE bd_ahrm_cds CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 # Tabela utilizada para armazenar os estados cadastrados no sistema
 create table if not exists uf(
