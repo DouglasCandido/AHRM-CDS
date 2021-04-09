@@ -3,6 +3,8 @@
     require_once("conexao.php");
     
     require("integridadepaciente.php");
+
+    header("Content-type: text/html; charset=utf-8");
     
 ?>
 
@@ -213,7 +215,7 @@
                                             <div class='form-group'>
 
                                                 <label>Senha da conta de email que você registrou:</label> <br />
-                                                <input type='text' name='senhaContaEmail' size='50' placeholder='Exemplo: senha123'> <br /> 
+                                                <input type='password' name='senhaContaEmail' size='50' placeholder='Exemplo: senha123'> <br /> 
 
                                             </div>
 
@@ -242,6 +244,16 @@
 
                                     <?php 
 
+                                        //Import PHPMailer classes
+
+                                        require_once('PHPMailer.php');
+                                        require_once('SMTP.php');
+                                        require_once('Exception.php');
+                                        require_once('POP3.php');
+
+                                        if ( ! class_exists('Exception')) 
+                                            die('There is no hope!');
+
                                         if (isset($_POST) and !empty($_POST)) { 
 
                                             $botao = $_POST['btnEnviarEmail'];
@@ -269,43 +281,57 @@
 
                                             if($botao == 'ok') {
 
-                                                include_once('class.phpmailer.php');
-                                                require_once('class.smtp.php');
-                                                require_once('class.pop3.php');
+                                                //Instantiation and passing `true` enables exceptions
+                                                $mail = new PHPMailer(true);
 
-                                                # Configurações do servidor SMTP
-                                                $mail = new PHPMailer();
-                                                $mail->IsSMTP();
-                                                $mail->Mailer = 'smtp';
-                                                $mail->SMTPAuth = true;
-                                                $mail->Host = 'smtp.gmail.com'; 
-                                                $mail->Port = 587;
-                                                $mail->SMTPSecure = 'tls';
+                                                $mail->CharSet = 'UTF-8';
 
-                                                # Configurações para autenticação no determinado servidor SMTP
-                                                $mail->Username = $emailusuario; 
-                                                $mail->Password = $senhausuario; 
-                                                $mail->IsHTML(true);
-                                                $mail->CharSet = "utf8";
+                                                try {
 
-                                                # Configurações do email
-                                                $mail->From = $emailusuario;
-                                                $mail->FromName = $nomeusuario;
-                                                $mail->AddAddress($email_medico, $nome_medico); 
-                                                $mail->AddReplyTo($emailusuario, $nomeusuario);
-                                                $mail->Subject = "AHRM CDS: ";
-                                                $mail->Subject += " " . $assunto;
-                                                $mail->Body = $mensagemusuario;
+                                                    //Server settings
+                                                    $mail->SMTPDebug = SMTP::DEBUG_SERVER; //Enable verbose debug output
+                                                    $mail->isSMTP(); //Send using SMTP
+                                                    $mail->Host = 'smtp.gmail.com'; //Set the SMTP server to send through
+                                                    $mail->SMTPAuth = true; //Enable SMTP authentication
+                                                    $mail->SMTPOptions = array(
+                                                        'ssl' => array(
+                                                            'verify_peer' => false,
+                                                            'verify_peer_name' => false,
+                                                            'allow_self_signed' => true
+                                                        )
+                                                    );
+                                                    $mail->Username = $emailusuario; //SMTP username
+                                                    $mail->Password = $senhausuario; //SMTP password
+                                                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+                                                    $mail->Port = 587; //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
-                                                if(!$mail->Send()) {
+                                                    //Recipients
+                                                    $mail->setFrom($emailusuario, $nomeusuario);
+                                                    $mail->addAddress($email_medico, $nome_medico); //Add a recipient
+                                                    // $mail->addAddress('ellen@example.com'); //Name is optional
+                                                    // $mail->addReplyTo('info@example.com', 'Information');
+                                                    // $mail->addCC('cc@example.com');
+                                                    // $mail->addBCC('bcc@example.com');
 
-                                                    echo "<script> alert('O email não foi enviado.'); </script>";
-                                                    echo "<h3 style='text-align: center;'> Erro no envio do email: " . $mail->ErrorInfo . "</h3>";
-                                                    exit;
+                                                    //Attachments
+                                                    // $mail->addAttachment('/var/tmp/file.tar.gz'); //Add attachments
+                                                    // $mail->addAttachment('/tmp/image.jpg', 'new.jpg'); //Optional name
 
+                                                    //Content
+                                                    $mail->isHTML(true); //Set email format to HTML
+                                                    $mail->Subject = $assunto;
+                                                    $mail->Body = $mensagemusuario;
+                                                    $mail->AltBody = $mensagemusuario;
+
+                                                    $mail->send();
+
+                                                    echo 'Message has been sent';
+
+                                                } catch (Exception $e) {
+
+                                                    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+                                                    
                                                 }
-
-                                                echo "<script> alert('O email foi enviado com sucesso!'); </script>";
 
                                             }
 
