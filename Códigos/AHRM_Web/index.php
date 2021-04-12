@@ -64,7 +64,6 @@
                             <span class='icon-bar'></span>
                             <span class='icon-bar'></span>
                         </button>
-                        <a class='navbar-brand' href='sobre.html' style='color: #fff; font-size: 16pt'>Sobre</a>
                         <a class='navbar-brand' href='contato.html' style='color: #fff; font-size: 16pt'>Contato</a>
                     </div>
                 </nav> 

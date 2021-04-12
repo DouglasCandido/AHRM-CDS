@@ -231,7 +231,7 @@
                                             <div class='form-group'>
 
                                                 <label>Corpo do email:</label> <br />
-                                                <textarea rows='10' cols='145' name='mensagemEmail' placeholder='Exemplo: Olá, Doutor. Eu gostaria de agendar uma consulta pessoalmente na sua clínica.'></textarea>
+                                                <textarea rows='10' cols='120' name='mensagemEmail' placeholder='Exemplo: Olá, Doutor. Eu gostaria de agendar uma consulta pessoalmente na sua clínica.'></textarea>
 
                                             </div>
 
