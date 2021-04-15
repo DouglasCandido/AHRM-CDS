@@ -1,7 +1,7 @@
 <?php
 
 	# Conexão com o banco de dados
-	$conexao = mysqli_connect("localhost", "root", "mysqlUsernamePassword", "bd_ahrm_cds");
+	$conexao = mysqli_connect("localhost", "root", "mysql", "bd_ahrm_cds");
 	
 	if(!$conexao) {
 		
