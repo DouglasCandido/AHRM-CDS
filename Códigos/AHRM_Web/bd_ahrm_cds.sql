@@ -165,6 +165,8 @@ create table if not exists exame(
     
 );
 
+
+
 # Tabela utilizada para armazenar os laudos enviados por um médico (tanto o paciente quanto o médico possuem acesso)
 create table if not exists laudo(
 
@@ -179,6 +181,24 @@ create table if not exists laudo(
     tipo_pdf text not null,
     pdf longblob not null,
 	primary key(codigo),
+    foreign key(codigo_medico) references medico(codigo),
+    foreign key(codigo_paciente) references paciente(codigo)
+    
+);
+
+create table if not exists tratamento(
+
+    codigo int unique auto_increment,
+    codigo_paciente int not null,
+    codigo_medico int not null,
+    data_do_tratamento date not null,
+    tipo_tratamento varchar(50) not null,
+    descricao_tratamento varchar(100),
+    nome_pdf varchar(100) not null,
+    tamanho_pdf varchar(100) not null,
+    tipo_pdf text not null,
+    pdf longblob not null,
+    primary key(codigo),
     foreign key(codigo_medico) references medico(codigo),
     foreign key(codigo_paciente) references paciente(codigo)
     
