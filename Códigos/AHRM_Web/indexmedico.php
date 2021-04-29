@@ -89,6 +89,7 @@
 
             <div class="collapse navbar-collapse navbar-ex1-collapse" style="position: absolute;">
                 <ul class="nav navbar-nav side-nav" id="cormenulateral">
+
                     <li>
                         <a href="javascript: ;" data-toggle="collapse" data-target="#pacientes"><i class="fa fa-user"></i> Pacientes <i class="fa fa-fw fa-caret-down">
                         </i></a>
@@ -101,6 +102,7 @@
                             </li>
                         </ul>
                     </li>
+
                     <li>
                         <a href="javascript: ;" data-toggle="collapse" data-target="#exames"><i class="fa fa-file"></i> Laudos <i class="fa fa-fw fa-caret-down">
                         </i></a>
@@ -116,7 +118,6 @@
                             </li>
                         </ul>
                     </li>
-
                     <li>
                         <a href="javascript: ;" data-toggle="collapse" data-target="#tratamentos"><i class="fa fa-file"></i> Tratamentos <i class="fa fa-fw fa-caret-down">
                         </i></a>
@@ -129,7 +130,6 @@
                             </li>
                         </ul>
                     </li>
-                    
                 </ul>
    		    </div>
         </nav>
@@ -226,6 +226,112 @@
 
                             <div class="form-group"> 
                                 <input name="cadLaudo" id="escolher-arquivo" type="file" required> 
+                            </div>
+
+                            <input type="hidden" name="MAX_FILE_SIZE" value="999999999">
+                        
+                            <br />
+
+                            <div style="text-align: right;">
+
+                                <button type="submit" class="btn btn-success">Enviar</button>
+                                <button type="reset" class="btn btn-primary">Limpar</button>
+
+                            </div>
+
+                        </form>
+
+                        </ol>
+                        
+                    </div>
+                </div>
+
+                <!-- Enviar tratamento -->
+
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        <h2 style='text-align: center;'> Aqui você pode enviar um tratamento (PDF) para um paciente </h2>
+
+                        <br />
+
+                        <ol class="breadcrumb" style="background-color: rgba(0, 0, 0, 0.8); position: relative; width: 80%; height: 100%; left: 10%;">
+                            <li class="active" style="font-size: 16pt; color: white;">
+                                <i class="fa fa-edit" style="font-size: 30pt; color: blue;"></i> Envio de laudo
+                            </li>
+
+                            <br /> <br />
+
+                        <form name="cadTratamentoForm" method="post" role="form" enctype="multipart/form-data" action="cadastro/enviar_tratamento.php">
+
+                        <div class="form-group">
+
+                            <label style="font-size: 12pt; color: white;">Data de envio do tratamento:</label> &nbsp;
+
+                            <?php
+
+                                $time = strtotime(date('Y-m-d H:i:s'));
+                                $data_do_tratamento = date('Y-m-d', $time);
+
+                                echo "<input type='date' name='cadDataTratamento' readonly style='color: black;' value=" . $data_do_tratamento . ">";
+
+                            ?>
+
+                        </div>
+
+                            <!--
+                            <div class="form-group">
+
+                                    <label style="font-size: 12pt; color: white;">Tipo do laudo:</label> &nbsp;
+
+                                    <select name='cadTipoLaudo'>
+                                    <option> Eletrocardiograma </option>
+                                    <option> Radiológico </option>
+                                    <option> Radioscopia </option>
+                                    <option> Ressonância magnética </option>
+                                    </select>
+
+                            </div>
+                            -->
+
+                            <div class="form-group">
+                                    <label style="font-size: 12pt; color: white;"> Descrição do tratamento </label>
+                                    <textarea rows="10" cols="95" name="cadDescricaoTratamento"></textarea>
+                            </div>
+
+                            <br />
+
+                            <div class="form-group">
+
+                                <label style="font-size: 12pt; color: white;"> Selecione o paciente que receberá o tratamento: </label>
+
+                                <?php
+
+                                    $q = "select * from paciente where medico_paciente=" . $_SESSION['codigo_medico'];
+                                    $resultado = mysqli_query($conexao, $q) or die(mysqli_error($conexao)); 
+
+                                    while($dados2 = mysqli_fetch_array($resultado)) {
+
+                                        echo "<select name='cadPaciente'>";
+
+                                            echo "<option value=" . $dados2['codigo'] . ">";
+
+                                            echo $dados2['codigo'] . ", " . $dados2['nome_paciente'];
+
+                                            echo "</option>";
+
+                                        echo "</select>";
+
+                                    }
+
+                                ?>
+
+                            </div>
+
+                            <br /> 
+
+                            <div class="form-group"> 
+                                <input name="cadTratamento" id="escolher-arquivo" type="file" required> 
                             </div>
 
                             <input type="hidden" name="MAX_FILE_SIZE" value="999999999">

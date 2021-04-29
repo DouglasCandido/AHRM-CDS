@@ -192,7 +192,7 @@ create table if not exists tratamento(
     codigo_paciente int not null,
     codigo_medico int not null,
     data_do_tratamento date not null,
-    tipo_tratamento varchar(50) not null,
+    # tipo_tratamento varchar(50) not null,
     descricao_tratamento varchar(100),
     nome_pdf varchar(100) not null,
     tamanho_pdf varchar(100) not null,
@@ -240,6 +240,7 @@ create table if not exists Cidade(
     foreign key(uf) references uf(codigo)
 ); 
 */
+
 
 
 

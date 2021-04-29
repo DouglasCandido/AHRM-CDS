@@ -105,7 +105,7 @@
                             </li>
                         </ul>
                     </li>
-		    <li>
+		            <li>
                         <a href="javascript: ;" data-toggle="collapse" data-target="#tratamentos"><i class="fa fa-file"></i> Tratamentos <i class="fa fa-fw fa-caret-down">
                         </i></a>
                         <ul id="tratamentos" class="collapse">

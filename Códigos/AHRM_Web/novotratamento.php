@@ -1,9 +1,9 @@
-<?php
+<?php 
 
-	require_once("conexao.php");
-
-	require("integridademedico.php");
-	
+    require_once("conexao.php");
+    
+    require("integridademedico.php");
+    
 ?>
 
 <!DOCTYPE html>
@@ -16,12 +16,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 
 	<link rel="icon" href="favicon.png" type="image/x-icon"/>
     
-    <title>AHRM CDS - Aceitar novos pacientes</title>
+    <title>AHRM CDS - Novo tratamento</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -31,40 +31,15 @@
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
+    
 	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
-    <!-- Plugin JQuery AJAX form -->
-    <script src="http://malsup.github.com/jquery.form.js"></script> 
-
-    <script>
-
-        // Utiliza AJAX para carregar dinamicamente, e sem atualização, as solicitações de vínculos dos pacientes
-        function solicitacoesDePacientes() {
-
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-
-            if (xhttp.readyState == 4 && xhttp.status == 200) {
-
-                document.getElementById("resultado").innerHTML = xhttp.responseText;
-
-            }
-
-            };
-
-            xhttp.open("GET", "pedidos_de_vinculo.php", true);
-            xhttp.send();
-
-        }
-
-    </script>
 
 </head>
 
-<body onload="solicitacoesDePacientes()">
+<body onload="alert('Para receitar um tratamento para um paciente é necessário preencher os campos abaixo, eles são utilizados orientar o paciente.');">
 
     <div id="wrapper">
 
@@ -83,6 +58,7 @@
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
+                    
                     <a href="" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell" style="font-size: 20px; padding: 0px; margin: 0px; line-height: 50px;"></i> <b class="caret"></b></a>
 
                     <!-- Notificações
@@ -121,7 +97,7 @@
                                 <a href="meuspacientes.php"><i class="fa fa-group"></i> Meus pacientes </a>
                             </li>
                             <li>
-                                <a href=""><i class="fa fa-plus"></i> Aceitar novo paciente </a>
+                                <a href="aceitar_novo_paciente.php"><i class="fa fa-plus"></i> Aceitar novo paciente </a>
                             </li>
                         </ul>
                     </li>
@@ -140,7 +116,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
+					    <li>
                         <a href="javascript: ;" data-toggle="collapse" data-target="#tratamentos"><i class="fa fa-file"></i> Tratamentos <i class="fa fa-fw fa-caret-down">
                         </i></a>
                         <ul id="tratamentos" class="collapse">
@@ -153,7 +129,7 @@
                         </ul>
                     </li>
                 </ul>
-   		    </div>
+            </div>
         </nav>
 
         <div id="page-wrapper">
@@ -162,15 +138,111 @@
 
                 <div class="row">
                     <div class="col-lg-12">
+
                         <h1 class="page-header">
-                            Aceite ou decline os pedidos de vínculo dos pacientes
+                            Aqui você poderá recomendar um tratamento para um paciente
                         </h1>
 
-                        <div id="resultado">
+                        <ol class="breadcrumb" style="background-color: rgba(0, 0, 0, 0.8); position: relative; width: 100%; height: 100%;">
 
+                            <li class="active" style="font-size: 16pt; color: white;">
+                                <i class="fa fa-edit" style="font-size: 30pt; color: blue;"></i> Novo tratamento
+                            </li>
 
+                            <br /> <br />
 
-                        </div>
+                            <form name="novoExameForm" method="post" role="form" enctype="multipart/form-data" action="cadastro/cadastro_tratamento.php">
+
+                            <?php 
+
+                            # Exibe algumas informações do paciente
+                            $q = "select * from medico where codigo=" . $_SESSION['codigo_medico'] . "";
+                            $resultado = mysqli_query($conexao, $q) or die(mysqli_error($conexao)); 
+                            $dados = mysqli_fetch_array($resultado); 
+
+                            ?>
+
+                            <div class="form-group" style="text-align: center;">
+
+                                <?php 
+
+                                    echo"<h2 style='color: white; font-size: 16pt;'> Dr. " . $dados['nome_medico'] . "</h2>";
+                                    echo"<h2 style='color: white; font-size: 16pt;'> CRM: " . $dados['crm'] . "</h2>";
+                                    echo"<h2 style='color: white; font-size: 16pt;'> Email: " . $dados['email_medico'] . "</h2>";
+                                    echo"<h2 style='color: white; font-size: 16pt;'> Telefone: " . $dados['telefone'] . "</h2>";
+                                    echo"<h2 style='color: white; font-size: 16pt;'> Estado: " . $dados['uf'] . "</h2>";
+                                    echo"<h2 style='color: white; font-size: 16pt;'> Cidade: " . $dados['cidade'] . "</h2>";
+
+                                 ?> 
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label style="font-size: 12pt; color: white;">Selecione o paciente para receitar o tratamento:</label>
+
+                                <?php 
+
+                                $q1 = "select codigo, codigo_paciente from vinculo where codigo_medico =" . $_SESSION['codigo_medico'];
+
+                                $resultado1 = mysqli_query($conexao, $q1);
+
+                                while($dados1 = mysqli_fetch_array($resultado1)) {
+
+                                    $q2 = "select codigo, nome_paciente from paciente where codigo =" . $dados1['codigo_paciente'];
+                                    $resultado2 = mysqli_query($conexao, $q2);
+                                    $dados2 = mysqli_fetch_array($resultado2);
+
+                                    echo "<select name='cadPaciente'>";
+
+                                        echo "<option value=" . $dados2['codigo'] . ">";
+
+                                        echo $dados2['codigo'] . ", " . $dados2['nome_paciente'];
+
+                                        echo "</option>";
+
+                                    echo "</select>";
+
+                                }
+
+                                ?>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label style="font-size: 12pt; color: white;">Data de emissão do tratamento:</label> &nbsp;
+
+                                <?php
+
+                                    $time = strtotime(date('Y-m-d H:i:s'));
+                                    $data_do_tratamento = date('Y-m-d', $time);
+
+                                    echo "<input type='date' name='cadDataTratamento' readonly style='color: black;' value=" . $data_do_tratamento . ">";
+
+                                ?>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                    <label style="font-size: 12pt; color: white;">Descreva o tratamento que você irá receitar:</label>
+                                    <textarea rows="10" cols="121" name="cadDescricaoTratamento"></textarea>
+
+                            </div>
+
+                            <br />
+
+                            <div style="text-align: right;">
+
+                                <button type="submit" class="btn btn-success">Enviar</button>
+                                <button type="reset" class="btn btn-primary">Limpar</button>
+
+                            </div>
+
+                        </form>
+
+                        </ol>
                     </div>
                 </div>
             </div>
@@ -183,3 +255,4 @@
 </body>
 
 </html>
+

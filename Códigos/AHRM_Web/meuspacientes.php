@@ -114,21 +114,19 @@
                             <li>
                                 <a href="novolaudo.php"><i class="fa fa-arrow-up"></i> Novo laudo </a>
                             </li>
-			    <li>
-                	        <a href="javascript: ;" data-toggle="collapse" data-target="#tratamentos"><i class="fa fa-file"></i> Tratamentos <i class="fa fa-fw fa-caret-down">
-			    </i></a>
-				<ul id="tratamentos" class="collapse">
-				<li>
-				     <a href="tratamentosreceitados.php"><i class="fa fa-arrow-up"></i> Tratamentos Receitados </a>
-				 </li>
-			    <li>
-				<a href="novotratamento.php"><i class="fa fa-plus"></i> Novo Tratamento </a>
+                            </ul>
+                        </li>   
+                    <li>
+                        
+                        <a href="javascript: ;" data-toggle="collapse" data-target="#tratamentos"><i class="fa fa-file"></i> Tratamentos <i class="fa fa-fw fa-caret-down">
+                        </i></a>
+                        <ul id="tratamentos" class="collapse">
+			                <li>
+				                <a href="tratamentosreceitados.php"><i class="fa fa-arrow-up"></i> Tratamentos Receitados </a>
+			                </li>
+			                <li>
+                                <a href="novotratamento.php"><i class="fa fa-plus"></i> Novo Tratamento </a>
                             </li>
-                        </ul>
-                    </li>
-
-
-
                         </ul>
                     </li>
                 </ul>
@@ -234,3 +232,4 @@
 </body>
 
 </html>
+
